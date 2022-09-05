@@ -5,7 +5,7 @@ import SearchBar from "../SearchBar/SearchBar";
 const NavigationBar = () => {
   return (
     <section className={styles.navigationBar}>
-      <TittleH1>WheatherApp</TittleH1>
+      <TittleH1>WeatherApp</TittleH1>
       <SearchBar />
     </section>
   );
