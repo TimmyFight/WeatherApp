@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import styles from "./ButtonSearch.module.css";
 
-const ButtonSearch = ({ children, value }) => {
+const ButtonSearch = ({ children, value, title }) => {
   return (
     <button
       className={classnames({
@@ -10,6 +10,7 @@ const ButtonSearch = ({ children, value }) => {
         [styles.search]: value === "search",
         [styles.geoLocation]: value === "geoLocation",
       })}
+      title={title}
       value={value}
     >
       {children}
@@ -19,6 +20,7 @@ const ButtonSearch = ({ children, value }) => {
 
 ButtonSearch.propTypes = {
   value: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ButtonSearch;

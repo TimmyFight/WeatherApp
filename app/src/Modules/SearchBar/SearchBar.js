@@ -6,7 +6,7 @@ const SearchBar = () => {
   return (
     <section className={styles.searchBar}>
       <InputField type="text" name="city" placeholder="Find a city" />
-      <ButtonSearch value="geoLocation" />
+      <ButtonSearch value="geoLocation" title="Use Geo Location" />
     </section>
   );
 };
