@@ -19,13 +19,13 @@ InputField.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string,
   required: PropTypes.bool,
-  autocomplete: PropTypes.bool,
+  autocomplete: PropTypes.string,
 };
 
 InputField.defaultProps = {
   type: "text",
   required: false,
-  autocomplete: false,
+  autocomplete: "off",
 };
 
 export default InputField;
