@@ -5,7 +5,7 @@ import ButtonSearch from "../../Atoms/ButtonSearch/ButtonSearch";
 const SearchBar = () => {
   return (
     <section className={styles.searchBar}>
-      <InputField type="text" name="search" placeholder="Search" />
+      <InputField type="text" name="city" placeholder="Find a city" />
       <ButtonSearch />
     </section>
   );

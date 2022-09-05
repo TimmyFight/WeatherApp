@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styles from "./InputField.module.css";
 
-const InputField = ({ placeholder, type, name, required }) => {
+const InputField = ({ placeholder, type, name, required, autocomplete }) => {
   return (
     <input
       className={styles.inputField}
@@ -9,6 +9,7 @@ const InputField = ({ placeholder, type, name, required }) => {
       name={name}
       required={required}
       placeholder={placeholder}
+      autoComplete={autocomplete}
     />
   );
 };
@@ -18,11 +19,13 @@ InputField.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string,
   required: PropTypes.bool,
+  autocomplete: PropTypes.bool,
 };
 
 InputField.defaultProps = {
   type: "text",
   required: false,
+  autocomplete: false,
 };
 
 export default InputField;
