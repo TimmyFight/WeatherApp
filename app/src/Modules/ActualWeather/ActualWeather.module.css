@@ -1,7 +1,8 @@
 .actualWeather {
   width: 60%;
-  margin: 0 auto;
+  margin: 30px auto;
+  padding: 30px 30px;
   color: #fff;
-  background-color: #0383a3;
+  background-color: #15003b;
   border-radius: 15px;
 }
