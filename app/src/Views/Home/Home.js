@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import NavigationBar from "../../Modules/NavigationBar/NavigationBar";
 import SearchBar from "../../Modules/SearchBar/SearchBar";
+import ActualWeather from "../../Modules/ActualWeather/ActualWeather";
 import ButtonSearch from "../../Atoms/ButtonSearch/ButtonSearch";
 
 const Home = () => {
@@ -16,7 +17,9 @@ const Home = () => {
       .then((res) => res.json())
       .then((result) => {
         setActualWeather(result);
-        console.log("actualWeather", actualWeather);
+      })
+      .catch((err) => {
+        console.error("Server Error: ", err);
       });
   };
 
@@ -45,6 +48,11 @@ const Home = () => {
           />
         </SearchBar>
       </NavigationBar>
+      {typeof actualWeather.main != "undefined" ? (
+        <ActualWeather data={actualWeather} />
+      ) : (
+        <div></div>
+      )}
     </section>
   );
 };
