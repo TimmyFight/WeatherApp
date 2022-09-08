@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import NavigationBar from "../../Modules/NavigationBar/NavigationBar";
 import SearchBar from "../../Modules/SearchBar/SearchBar";
@@ -7,18 +7,32 @@ import ButtonSearch from "../../Atoms/ButtonSearch/ButtonSearch";
 const Home = () => {
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
+  const [actualWeather, setActualWeather] = useState([]);
 
-  const getCurrentPosition = useCallback(() => {
+  const getActualWeather = async () => {
+    await fetch(
+      `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setActualWeather(result);
+        console.log("actualWeather", actualWeather);
+      });
+  };
+
+  const getCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
-      console.log("Position set: ", lat, long);
+      if (lat.length !== 0 && long.length !== 0) {
+        getActualWeather();
+      }
     });
-  }, [lat, long]);
+  };
 
   useEffect(() => {
     getCurrentPosition();
-  }, [getCurrentPosition]);
+  }, [lat, long]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className={styles.appBody}>
