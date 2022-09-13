@@ -8,5 +8,6 @@
 }
 
 .temperature.small {
+  display: inline;
   font-size: inherit;
 }

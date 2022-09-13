@@ -6,3 +6,9 @@
   background-color: #15003b;
   border-radius: 15px;
 }
+
+.columns {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}

@@ -9,7 +9,7 @@ const Temperature = ({ children, size }) => {
   };
 
   return (
-    <p
+    <span
       className={classnames({
         [styles.temperature]: true,
         [styles.large]: size === "large",
@@ -17,17 +17,17 @@ const Temperature = ({ children, size }) => {
       })}
     >
       {roundTemperature(children)}&#8451;
-    </p>
+    </span>
   );
 };
 
 Temperature.propTypes = {
   children: PropTypes.number,
-  large: PropTypes.string,
+  size: PropTypes.string,
 };
 
 Temperature.defaultProps = {
-  large: "small",
+  size: "small",
 };
 
 export default Temperature;

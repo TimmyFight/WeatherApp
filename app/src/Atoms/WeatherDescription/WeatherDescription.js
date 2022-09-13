@@ -16,7 +16,6 @@ const WeatherDescription = ({ children, firstUpperCase }) => {
 };
 
 WeatherDescription.propTypes = {
-  children: PropTypes.string,
   firstUpperCase: PropTypes.bool,
 };
 
