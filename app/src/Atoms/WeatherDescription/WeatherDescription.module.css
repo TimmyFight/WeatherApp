@@ -1,0 +1,7 @@
+.description {
+  font-size: 16px;
+}
+
+.firstUpperCase:first-letter {
+  text-transform: capitalize;
+}

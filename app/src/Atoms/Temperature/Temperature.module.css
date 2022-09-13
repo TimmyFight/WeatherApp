@@ -1,5 +1,12 @@
 .temperature {
-  font-size: 90px;
   font-weight: bold;
+}
+
+.temperature.large {
+  font-size: 90px;
   margin: 15px 0;
+}
+
+.temperature.small {
+  font-size: inherit;
 }
