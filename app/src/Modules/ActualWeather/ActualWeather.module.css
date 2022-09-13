@@ -7,6 +7,12 @@
   border-radius: 15px;
 }
 
+.grip {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .columns {
   display: flex;
   gap: 18px;

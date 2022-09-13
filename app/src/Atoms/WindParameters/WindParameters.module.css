@@ -1,0 +1,10 @@
+.direction {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../../../public/images/direction.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  transform: translateY(4px);
+}
