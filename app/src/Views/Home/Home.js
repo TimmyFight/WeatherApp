@@ -3,24 +3,44 @@ import styles from "./Home.module.css";
 import NavigationBar from "../../Modules/NavigationBar/NavigationBar";
 import SearchBar from "../../Modules/SearchBar/SearchBar";
 import ActualWeather from "../../Modules/ActualWeather/ActualWeather";
+import DailyForecast from "../../Modules/DailyForecast/DailyForecast";
 import ButtonSearch from "../../Atoms/ButtonSearch/ButtonSearch";
 
 const Home = () => {
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
   const [actualWeather, setActualWeather] = useState([]);
+  const [dailyForecast, setDailyForecast] = useState([]);
+
+  const fetchURLS = [
+    `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`,
+  ];
 
   const getActualWeather = async () => {
-    await fetch(
-      `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        setActualWeather(result);
-      })
-      .catch((err) => {
-        console.error("Server Error: ", err);
-      });
+    Promise.all(
+      fetchURLS.map((url) =>
+        fetch(url)
+          .then(checkStatus)
+          .then(parseJSON)
+          .catch((error) => console.error("Server", error))
+      )
+    ).then((data) => {
+      setActualWeather(data[0]);
+      setDailyForecast(data[1]);
+    });
+  };
+
+  const checkStatus = (response) => {
+    if (response.ok) {
+      return Promise.resolve(response);
+    } else {
+      return Promise.reject(new Error(response.statusText));
+    }
+  };
+
+  const parseJSON = (response) => {
+    return response.json();
   };
 
   const getCurrentPosition = () => {
@@ -50,6 +70,11 @@ const Home = () => {
       </NavigationBar>
       {typeof actualWeather.main != "undefined" ? (
         <ActualWeather data={actualWeather} />
+      ) : (
+        <div></div>
+      )}
+      {typeof dailyForecast.list != "undefined" ? (
+        <DailyForecast data={dailyForecast} />
       ) : (
         <div></div>
       )}
