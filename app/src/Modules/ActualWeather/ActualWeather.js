@@ -7,6 +7,7 @@ import Separator from "../../Atoms/Separator/Separator";
 import WetherIcon from "../../Atoms/WeatherIcon/WeatherIcon";
 import ActualTime from "../../Atoms/ActualTime/ActualTime";
 import WindParameters from "../../Atoms/WindParameters/WindParameters";
+import Distance from "../../Atoms/Distance/Distance";
 
 const ActualWeather = ({ data }) => {
   console.log(data);
@@ -37,6 +38,15 @@ const ActualWeather = ({ data }) => {
           <WheatherDescription>
             Wind:{" "}
             <WindParameters speed={data.wind.speed} direction={data.wind.deg} />
+          </WheatherDescription>
+          <WheatherDescription>
+            Pressure: {data.main.pressure} hPa
+          </WheatherDescription>
+          <WheatherDescription>
+            Humidity: {data.main.humidity}%
+          </WheatherDescription>
+          <WheatherDescription>
+            Visibility: <Distance value={data.visibility} />
           </WheatherDescription>
         </section>
       </section>
