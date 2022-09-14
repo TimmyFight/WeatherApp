@@ -7,6 +7,10 @@
   margin: 15px 0;
 }
 
+.temperature.mid {
+  font-size: 45px;
+}
+
 .temperature.small {
   display: inline;
   font-size: inherit;

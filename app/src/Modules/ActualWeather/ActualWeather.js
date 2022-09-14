@@ -34,6 +34,10 @@ const ActualWeather = ({ data }) => {
             Max <Temperature>{data.main.temp_max}</Temperature>
           </WheatherDescription>
         </section>
+        <section className={styles.center}>
+          <TitleH2>Feels like</TitleH2>
+          <Temperature size={"mid"}>{data.main.feels_like}</Temperature>
+        </section>
         <section>
           <WheatherDescription>
             Wind:{" "}

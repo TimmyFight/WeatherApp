@@ -13,6 +13,7 @@ const Temperature = ({ children, size }) => {
       className={classnames({
         [styles.temperature]: true,
         [styles.large]: size === "large",
+        [styles.mid]: size === "mid",
         [styles.small]: size === "small",
       })}
     >
