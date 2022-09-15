@@ -1,6 +1,9 @@
 .dailyForecast {
-  width: 60%;
+  width: 64%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5px;
   margin: 30px auto;
-  padding: 30px 30px;
+  padding: 30px 0;
   color: #15003b;
 }

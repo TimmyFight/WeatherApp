@@ -31,9 +31,13 @@ const DailyForecast = ({ data }) => {
 
   return (
     <section className={styles.dailyForecast}>
-      {separatedForecast.map((day) => {
-        return <SingleDay day={day} />;
-      })}
+      {typeof lisOfRecords != "undefined" ? (
+        separatedForecast.map((day) => {
+          return day.length ? <SingleDay day={day} /> : null;
+        })
+      ) : (
+        <div></div>
+      )}
     </section>
   );
 };
