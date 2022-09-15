@@ -3,7 +3,7 @@ import styles from "./DailyForecast.module.css";
 import SingleDay from "../../Atoms/SingleDay/SingleDay";
 
 const DailyForecast = ({ data }) => {
-  let day1, day2, day3, day4, day5, separatedForecast;
+  let day2, day3, day4, day5, separatedForecast;
   const lisOfRecords = data.list;
 
   const formatDate = (date) => {
@@ -21,7 +21,6 @@ const DailyForecast = ({ data }) => {
     });
   };
 
-  day1 = seperateDayByDay(lisOfRecords, 0);
   day2 = seperateDayByDay(lisOfRecords, 1);
   day3 = seperateDayByDay(lisOfRecords, 2);
   day4 = seperateDayByDay(lisOfRecords, 3);
