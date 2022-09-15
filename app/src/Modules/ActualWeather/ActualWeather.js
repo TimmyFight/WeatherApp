@@ -10,7 +10,6 @@ import WindParameters from "../../Atoms/WindParameters/WindParameters";
 import Distance from "../../Atoms/Distance/Distance";
 
 const ActualWeather = ({ data }) => {
-  console.log(data);
   return (
     <section className={styles.actualWeather}>
       <TitleH2 className={styles.header}>

@@ -32,7 +32,7 @@ const DailyForecast = ({ data }) => {
     <section className={styles.dailyForecast}>
       {typeof lisOfRecords != "undefined" ? (
         separatedForecast.map((day) => {
-          return day.length ? <SingleDay day={day} /> : null;
+          return day.length ? <SingleDay day={day} key={day[0].dt} /> : null;
         })
       ) : (
         <div></div>
