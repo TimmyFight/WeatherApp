@@ -27,7 +27,7 @@ const DailyForecast = ({ data }) => {
   day4 = seperateDayByDay(lisOfRecords, 3);
   day5 = seperateDayByDay(lisOfRecords, 4);
 
-  separatedForecast = [day1, day2, day3, day4, day5];
+  separatedForecast = [day2, day3, day4, day5];
 
   return (
     <section className={styles.dailyForecast}>
