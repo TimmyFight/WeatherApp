@@ -22,7 +22,7 @@ const Home = () => {
   ];
   let timerID;
 
-  const getCities = async (querryValue, geoURLS) => {
+  const getCities = async (geoURLS) => {
     Promise.all(
       geoURLS.map((url) =>
         fetch(url)
@@ -32,19 +32,19 @@ const Home = () => {
       )
     ).then((data) => {
       setMatchedCities(data);
-      setQuerryCity(querryValue);
     });
   };
 
   const searchHandler = (event) => {
+    clearTimeout(timerID);
     const querryValue = event.target.value;
+    setQuerryCity(querryValue);
     const geoURLS = [
       `${process.env.REACT_APP_GEO_API_URL}/direct?q=${querryValue}&limit=5&APPID=${process.env.REACT_APP_API_KEY}`,
     ];
-    clearTimeout(timerID);
     if (querryValue.length > 2) {
       timerID = setTimeout(function () {
-        getCities(querryValue, geoURLS);
+        getCities(geoURLS);
       }, 500);
     }
   };
@@ -104,7 +104,7 @@ const Home = () => {
             title="Use Geo Location"
             onClickHandler={getCurrentPosition}
           />
-          {querryCity.length > 2 ? (
+          {typeof matchedCities.length > 0 && querryCity.length > 2 ? (
             <MatchedCities data={matchedCities} />
           ) : null}
         </SearchBar>
