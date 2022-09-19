@@ -1,0 +1,9 @@
+.matchedCity {
+  cursor: pointer;
+  margin: 0;
+  padding: 1em;
+}
+
+.matchedCity:hover {
+  background-color: #f5f2f2;
+}
