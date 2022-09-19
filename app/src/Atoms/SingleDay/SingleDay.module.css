@@ -1,4 +1,5 @@
 .dailyForecast {
+  flex-basis: 100%;
   background-color: #dce3e0;
   border-radius: 15px;
   text-align: center;
