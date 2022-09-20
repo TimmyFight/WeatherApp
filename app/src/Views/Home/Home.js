@@ -15,6 +15,7 @@ const Home = () => {
   const [dailyForecast, setDailyForecast] = useState([]);
   const [querryCity, setQuerryCity] = useState("");
   const [matchedCities, setMatchedCities] = useState([]);
+  const [timmerIDState, setTimmerIDState] = useState();
 
   const fetchURLS = [
     `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`,
@@ -36,7 +37,7 @@ const Home = () => {
   };
 
   const searchHandler = (event) => {
-    clearTimeout(timerID);
+    clearTimeout(timmerIDState);
     const querryValue = event.target.value;
     setQuerryCity(querryValue);
     const geoURLS = [
@@ -46,6 +47,7 @@ const Home = () => {
       timerID = setTimeout(function () {
         getCities(geoURLS);
       }, 500);
+      setTimmerIDState(timerID);
     }
   };
 
