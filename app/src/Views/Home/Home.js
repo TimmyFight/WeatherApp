@@ -104,7 +104,7 @@ const Home = () => {
             title="Use Geo Location"
             onClickHandler={getCurrentPosition}
           />
-          {typeof matchedCities.length > 0 && querryCity.length > 2 ? (
+          {matchedCities.length > 0 && querryCity.length > 2 ? (
             <MatchedCities data={matchedCities} />
           ) : null}
         </SearchBar>
