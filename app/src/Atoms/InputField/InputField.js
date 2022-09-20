@@ -8,6 +8,8 @@ const InputField = ({
   required,
   autocomplete,
   onChangeHandler,
+  onFocusHandler,
+  onBlurHandler,
 }) => {
   return (
     <input
@@ -18,6 +20,8 @@ const InputField = ({
       placeholder={placeholder}
       autoComplete={autocomplete}
       onChange={onChangeHandler}
+      onFocus={onFocusHandler}
+      onBlur={onBlurHandler}
     />
   );
 };

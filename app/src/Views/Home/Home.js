@@ -16,6 +16,7 @@ const Home = () => {
   const [querryCity, setQuerryCity] = useState("");
   const [matchedCities, setMatchedCities] = useState([]);
   const [timmerIDState, setTimmerIDState] = useState();
+  const [visibility, setVisibility] = useState(false);
 
   const fetchURLS = [
     `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`,
@@ -100,13 +101,15 @@ const Home = () => {
             name="city"
             placeholder="Find a city"
             onChangeHandler={searchHandler}
+            onFocusHandler={() => setVisibility(true)}
+            onBlurHandler={() => setVisibility(false)}
           />
           <ButtonSearch
             value="geoLocation"
             title="Use Geo Location"
             onClickHandler={getCurrentPosition}
           />
-          {matchedCities.length > 0 && querryCity.length > 2 ? (
+          {matchedCities.length > 0 && querryCity.length > 2 && visibility ? (
             <MatchedCities data={matchedCities} />
           ) : null}
         </SearchBar>
