@@ -17,6 +17,7 @@ const Home = () => {
   const [matchedCities, setMatchedCities] = useState([]);
   const [timmerIDState, setTimmerIDState] = useState();
   const [visibility, setVisibility] = useState(false);
+  const [geoLocation, setGeoLocation] = useState(true);
 
   const fetchURLS = [
     `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`,
@@ -80,12 +81,29 @@ const Home = () => {
 
   const getCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
+      if (geoLocation) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      }
       if (lat.length !== 0 && long.length !== 0) {
         getActualWeather();
+        setGeoLocation(true);
       }
     });
+  };
+
+  const setCity = (event) => {
+    const latitude = event.target.getAttribute("data-lat");
+    const longitude = event.target.getAttribute("data-lon");
+    setLat(parseFloat(latitude));
+    setLong(parseFloat(longitude));
+    setGeoLocation(false);
+  };
+
+  const hiddeListOFCities = () => {
+    setTimeout(function () {
+      setVisibility(false);
+    }, 100);
   };
 
   useEffect(() => {
@@ -102,7 +120,7 @@ const Home = () => {
             placeholder="Find a city"
             onChangeHandler={searchHandler}
             onFocusHandler={() => setVisibility(true)}
-            onBlurHandler={() => setVisibility(false)}
+            onBlurHandler={hiddeListOFCities}
           />
           <ButtonSearch
             value="geoLocation"
@@ -110,7 +128,7 @@ const Home = () => {
             onClickHandler={getCurrentPosition}
           />
           {matchedCities.length > 0 && querryCity.length > 2 && visibility ? (
-            <MatchedCities data={matchedCities} />
+            <MatchedCities data={matchedCities} onClickHandler={setCity} />
           ) : null}
         </SearchBar>
       </NavigationBar>

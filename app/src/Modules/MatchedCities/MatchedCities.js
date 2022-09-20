@@ -1,7 +1,7 @@
 import styles from "./MatchedCities.module.css";
 import MatchedCity from "../../Atoms/MatchedCity/MatchedCity";
 
-const MatchedCities = ({ data }) => {
+const MatchedCities = ({ data, onClickHandler }) => {
   const listOfCities = data[0];
   let indexToRemove = [];
   let removeDuplicates = listOfCities.map((element) => {
@@ -17,7 +17,7 @@ const MatchedCities = ({ data }) => {
   indexToRemove.forEach((element) => delete listOfCities[element]);
 
   return (
-    <section className={styles.matchedCities}>
+    <section className={styles.matchedCities} onClick={onClickHandler}>
       {listOfCities.map((element, index) => {
         return <MatchedCity city={element} key={index} />;
       })}
