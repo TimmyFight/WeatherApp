@@ -4,8 +4,8 @@ import MatchedCity from "../../Atoms/MatchedCity/MatchedCity";
 const MatchedCities = ({ data }) => {
   return (
     <section className={styles.matchedCities}>
-      {data[0].map((element) => {
-        return <MatchedCity city={element} key={element.lon} />;
+      {data[0].map((element, index) => {
+        return <MatchedCity city={element} key={index} />;
       })}
     </section>
   );
