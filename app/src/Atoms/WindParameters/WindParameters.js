@@ -16,7 +16,7 @@ const WindParameters = ({ speed, direction }) => {
 
   useEffect(() => {
     directionTransform();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [direction]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
