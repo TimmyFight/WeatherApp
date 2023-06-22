@@ -68,7 +68,7 @@ const Home = () => {
   };
 
   const checkStatus = (response) => {
-    if (response.ok) {
+    if (response?.ok) {
       return Promise.resolve(response);
     } else {
       return Promise.reject(new Error(response.statusText));
@@ -127,17 +127,17 @@ const Home = () => {
             title="Use Geo Location"
             onClickHandler={getCurrentPosition}
           />
-          {matchedCities.length > 0 && querryCity.length > 2 && visibility ? (
+          {matchedCities.length > 0 && querryCity?.length > 2 && visibility ? (
             <MatchedCities data={matchedCities} onClickHandler={setCity} />
           ) : null}
         </SearchBar>
       </NavigationBar>
-      {typeof actualWeather.main != "undefined" ? (
+      {typeof actualWeather?.main != "undefined" ? (
         <ActualWeather data={actualWeather} />
       ) : (
         <div></div>
       )}
-      {typeof dailyForecast.list != "undefined" ? (
+      {typeof dailyForecast?.list != "undefined" ? (
         <DailyForecast data={dailyForecast} />
       ) : (
         <div></div>
