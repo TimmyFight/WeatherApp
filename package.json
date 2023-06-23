@@ -1,6 +1,5 @@
 {
   "name": "app",
-  "homepage": "https://TimmyFight.github.io/WeatherApp/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
