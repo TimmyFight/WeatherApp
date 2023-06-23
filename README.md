@@ -12,5 +12,4 @@ REACT_APP_ICON_URL = 'https://openweathermap.org/img/w'
 
 Please be aware that the API key should not be pushed to GitHub and it should not be visible public.
 
-The app has been deployed to:
-https://timmyfight.github.io/WeatherApp/
+The app has been deployed to: [Netlify](https://wheaterapp-adi.netlify.app/).
